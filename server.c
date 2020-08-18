@@ -13,6 +13,5 @@
 #include <math.h>
 #include <time.h>
 
-#define True (1 == 1)
-#define False (1 == 0)
-#define elif else if
+#define true (1 == 1)
+#define false (1 == 0)
