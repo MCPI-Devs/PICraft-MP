@@ -8,3 +8,11 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
  */
+
+#include <stdio.h>
+#include <math.h>
+#include <time.h>
+
+#define True (1 == 1)
+#define False (1 == 0)
+#define elif else if
