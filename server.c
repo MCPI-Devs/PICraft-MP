@@ -198,14 +198,15 @@ int logger(char* type, char* message)
 int command_interpreter()
 {
 	printf("> ");
-	char input[256];
-	scanf("%s", input);
-	if (compstr(input, "help") == 0)
+	size_t line_size;
+	char* input;
+	getline(&input, &line_size, stdin);
+	if (compstr(input, "help\n") == 0)
 	{
 		logger("info", "helpcommand");
 		return 0;
 	}
-	else if (compstr(input, "stop") == 0) {
+	else if (compstr(input, "stop\n") == 0) {
 		logger("info", "stopcommand");
 		return 0;
 	}
