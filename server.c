@@ -41,6 +41,28 @@
 
 static volatile int terminated;
 
+int compstr(char* str1, char* str2)
+{
+	int str1len = strlen(str1);
+	int str2len = strlen(str2);
+	int len;
+	if (str1len > str2len)
+	{
+		len = str1len;
+	}
+	else {
+		len = str2len;
+	}
+	for (int i = 0; i < len; i++)
+	{
+		if (str1[i] != str2[i])
+		{
+			return 1;
+		}
+	}
+	return 0;
+}
+
 char* get_current_time()
 {
         char tmp_str[10] = "";
@@ -162,10 +184,27 @@ int logger(char* type, char* message)
         }
 }
 
+int command_interpreter()
+{
+	char input[256];
+	scanf("%s", input);
+	if(compstr(input, "help") == 0)
+	{
+		logger("info", "helpcommand");
+		return 0;
+	}
+	else
+	{
+		logger("info", "Invalid Command!");
+		return 0;
+	}
+}
+
 int main(int argc, char* argv[])
 {
 	while (!terminated)
 	{
+		command_interpreter();
 		continue;
 	}
 	return 0;
