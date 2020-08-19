@@ -190,9 +190,13 @@ int command_interpreter()
 	printf("> ");
 	char input[256];
 	scanf("%s", input);
-	if(compstr(input, "help") == 0)
+	if (compstr(input, "help") == 0)
 	{
 		logger("info", "helpcommand");
+		return 0;
+	}
+	else if (compstr(input, "stop") == 0) {
+		logger("info", "stopcommand");
 		return 0;
 	}
 	else
