@@ -55,9 +55,11 @@ long long bin2longlong_d(char* data)
 	return tlonglong;
 }
 
-int bin2short_d(char* data)
+short bin2short_d(char* data)
 {
-	short tshort = data[0] | (data[1] << 8);
+	short tshort;
+	tshort = data[0]; 
+	tshort |= data[1] << 8;
 	return tshort;
 }
 
