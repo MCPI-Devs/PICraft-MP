@@ -41,6 +41,19 @@
 
 static volatile int terminated;
 
+char* get_current_time()
+{
+        char tmp_str[10] = "";
+        time_t now = time(NULL);
+        struct tm *now_tm = localtime(&now);
+        int now_h = now_tm->tm_hour;
+        int now_m = now_tm->tm_min;
+        int now_s = now_tm->tm_sec;
+        sprintf(tmp_str, "%d:%d:%d", now_h, now_m, now_s);
+        char* now_str = tmp_str;
+        return now_str;
+}
+
 char* text_format(char* format)
 {
 	if (format == "BOLD")
@@ -134,6 +147,19 @@ char* text_format(char* format)
 	else {
 		printf("Unknow format: %s \n", format);
 	}
+}
+
+int logger(char* type, char* message)
+{
+        if (type == "info")
+        {
+                printf("%s", text_format("GOLD"));
+                printf("[%s] ", get_current_time());
+                printf("%s", text_format("BLUE"));
+                printf("INFO => ");
+                printf("%s", text_format("AQUA"));
+                printf("%s \n", message);
+        }
 }
 
 int main(int argc, char* argv[])
