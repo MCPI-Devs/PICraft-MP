@@ -33,7 +33,7 @@ int bin2long_d(char* data)
 	return tlong;
 }
 
-int bin2longlong_d(char* data)
+long long int bin2longlong_d(char* data)
 {
 	long long tlonglong = ((long long) data[0] << 56) | ((long long) data[1] << 48) | ((long long) data[2] << 40) | ((long long) data[3] << 32) | ((long long) data[4] << 24) | ((long long) data[5] << 24) | ((long long) data[6] << 8) | (long long) data[7];
 	return tlonglong;
