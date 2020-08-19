@@ -27,6 +27,7 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <math.h>
 #include <time.h>
@@ -34,12 +35,13 @@
 #include <sys/socket.h>
 #include <arpa/inet.h>
 
-#include <packets.h>
+//#include <packets.h>
+#include <fancy.h>
 
-#define TRUE ((void*)1)
+#define TRUE (1)
 #define FALSE !(TRUE)
 
-static volatile int terminated;
+static int terminated;
 
 int compstr(char* str1, char* str2)
 {
@@ -49,8 +51,8 @@ int compstr(char* str1, char* str2)
 	if (str1len > str2len)
 	{
 		len = str1len;
-	}
-	else {
+	} else
+	{
 		len = str2len;
 	}
 	for (int i = 0; i < len; i++)
@@ -65,156 +67,50 @@ int compstr(char* str1, char* str2)
 
 char* get_current_time()
 {
-        char tmp_str[10] = "";
-        time_t now = time(NULL);
-        struct tm *now_tm = localtime(&now);
-        int now_h = now_tm->tm_hour;
-        int now_m = now_tm->tm_min;
-        int now_s = now_tm->tm_sec;
-        sprintf(tmp_str, "%d:%d:%d", now_h, now_m, now_s);
-        char* now_str = tmp_str;
-        return now_str;
+	char* tmp_str = malloc(10);
+	time_t now = time(NULL);
+	struct tm *now_tm = localtime(&now);
+	int now_h = now_tm->tm_hour;
+	int now_m = now_tm->tm_min;
+	int now_s = now_tm->tm_sec;
+
+	sprintf(tmp_str, "%d:%d:%d", now_h, now_m, now_s);
+	return tmp_str;
 }
 
-char* text_format(char* format)
+int logger(text_style_t type, char* message)
 {
-	if (format == "BOLD")
+	char* time = get_current_time();
+	if (type == INFO)
 	{
-		return "\x1b[1m";
-	}
-	else if (format == "OBFUSCATED")
+		printf(GOLD "[%s] " BLUE "INFO => " AQUA "%s \n" RESET, time, message);
+	} else if (type == ERROR)
 	{
-		return "";
+		printf(GOLD "[%s] " RED "ERROR => " AQUA "%s \n" RESET, time, message);
 	}
-	else if (format == "ITALIC")
-	{
-		return "\x1b[3m";
-	}
-	else if (format == "UNDERLINE")
-	{
-		return "\x1b[4m";
-	}
-	else if (format == "STRIKETHROUGH")
-	{
-		return "\x1b[9m";
-	}
-	else if (format == "RESET")
-	{
-		return "\x1b[m";
-	}
-	else if (format == "BLACK")
-	{
-		return "\x1b[38;5;16m";
-	}
-	else if (format == "DARKBLUE")
-	{
-		return "\x1b[38;5;19m";
-	}
-	else if (format == "DARKGREEN")
-	{
-		return "\x1b[38;5;34m";
-	}
-	else if (format == "DARKAQUA")
-	{
-		return "\x1b[38;5;37m";
-	}
-	else if (format == "DARKRED")
-	{
-		return "\x1b[38;5;124m";
-	}
-	else if (format == "PURPLE")
-	{
-		return "\x1b[38;5;127m";
-	}
-	else if (format == "GOLD")
-	{
-		return "\x1b[38;5;214m";
-	}
-	else if (format == "GRAY")
-	{
-		return "\x1b[38;5;145m";
-	}
-	else if (format == "DARKGRAY")
-	{
-		return "\x1b[38;5;59m";
-	}
-	else if (format == "BLUE")
-	{
-		return "\x1b[38;5;63m";
-	}
-	else if (format == "GREEN")
-	{
-		return "\x1b[38;5;83m";
-	}
-	else if (format == "AQUA")
-	{
-		return "\x1b[38;5;87m";
-	}
-	else if (format == "RED")
-	{
-		return "\x1b[38;5;203m";
-	}
-	else if (format == "LIGHTPURPLE")
-	{
-		return "\x1b[38;5;207m";
-	}
-	else if (format == "YELLOW")
-	{
-		return "\x1b[38;5;227m";
-	}
-	else if (format == "WHITE")
-	{
-		return "\x1b[38;5;231m";
-	}
-	else {
-		printf("Unknow format: %s \n", format);
-	}
-}
-
-int logger(char* type, char* message)
-{
-        if (type == "info")
-        {
-                printf("%s", text_format("GOLD"));
-                printf("[%s] ", get_current_time());
-                printf("%s", text_format("BLUE"));
-                printf("INFO => ");
-                printf("%s", text_format("AQUA"));
-                printf("%s \n", message);
-		printf("%s", text_format("RESET"));
-        }
-	if (type == "error")
-        {
-                printf("%s", text_format("GOLD"));
-                printf("[%s] ", get_current_time());
-                printf("%s", text_format("RED"));
-                printf("ERROR => ");
-                printf("%s", text_format("AQUA"));
-                printf("%s \n", message);
-		printf("%s", text_format("RESET"));
-        }
+	free(time);
+	return 0;
 }
 
 int command_interpreter()
 {
-	printf("> ");
 	size_t line_size;
 	char* input;
+
+	printf("> ");
 	getline(&input, &line_size, stdin);
-	if (compstr(input, "help\n") == 0)
+	if (strcmp(input, "help\n") == 0)
 	{
-		logger("info", "helpcommand");
-		return 0;
-	}
-	else if (compstr(input, "stop\n") == 0) {
-		logger("info", "stopcommand");
-		return 0;
-	}
-	else
+		logger(INFO, "helpcommand");
+	} else if (strcmp(input, "stop\n") == 0)
 	{
-		logger("error", "Invalid Command!");
-		return 0;
+		logger(INFO, "stopcommand");
+		terminated = TRUE;
+	} else
+	{
+		logger(ERROR, "Invalid Command!");
 	}
+	return 0;
 }
 
 int main(int argc, char* argv[])
