@@ -24,9 +24,9 @@ int endianess()
 int bin2int_d(char* data)
 {
 	int tint; 
-	tint = data[0] << 24
-	tint |= data[1] << 16
-	tint |= data[2] << 8
+	tint = data[0] << 24;
+	tint |= data[1] << 16;
+	tint |= data[2] << 8;
 	tint |= data[3];
 	return tint;
 }
@@ -34,16 +34,24 @@ int bin2int_d(char* data)
 long bin2long_d(char* data)
 {
 	long tlong; 
-	tlong = data[0] << 24
-	tlong |= data[1] << 16
-	tlong |= data[2] << 8
+	tlong = data[0] << 24;
+	tlong |= data[1] << 16;
+	tlong |= data[2] << 8;
 	tlong |= data[3];
 	return tlong;
 }
 
 long long bin2longlong_d(char* data)
 {
-	long long tlonglong = ((long long) data[0] << 56) | ((long long) data[1] << 48) | ((long long) data[2] << 40) | ((long long) data[3] << 32) | ((long long) data[4] << 24) | ((long long) data[5] << 24) | ((long long) data[6] << 8) | (long long) data[7];
+	long long tlonglong;
+	tlonglong = (long long) data[0] << 56;
+	tlonglong |= (long long) data[1] << 48;
+	tlonglong |= (long long) data[2] << 40;
+	tlonglong |= (long long) data[3] << 32;
+	tlonglong |= (long long) data[4] << 24;
+	tlonglong |= (long long) data[5] << 24;
+	tlonglong |= (long long) data[6] << 8;
+	tlonglong |= (long long) data[7];
 	return tlonglong;
 }
 
