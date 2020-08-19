@@ -67,6 +67,26 @@ char* text_format(char* format)
 	{
 		return "\x1b[m";
 	}
+	else if (format == "BLACK")
+	{
+		return "\x1b[38;5;16m";
+	}
+	else if (format == "DARKBLUE")
+	{
+		return "\x1b[38;5;19m";
+	}
+	else if (format == "DARKGREEN")
+	{
+		return "\x1b[38;5;34m";
+	}
+	else if (format == "DARKAQUA")
+	{
+		return "\x1b[38;5;37m";
+	}
+	else if (format == "DARKRED")
+	{
+		return "\x1b[38;5;124m";
+	}
 }
 
 int main(int argc, char* argv[])
