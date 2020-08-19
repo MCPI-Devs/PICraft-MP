@@ -87,6 +87,53 @@ char* text_format(char* format)
 	{
 		return "\x1b[38;5;124m";
 	}
+	else if (format == "PURPLE")
+	{
+		return "\x1b[38;5;127m";
+	}
+	else if (format == "GOLD")
+	{
+		return "\x1b[38;5;214m";
+	}
+	else if (format == "GRAY")
+	{
+		return "\x1b[38;5;145m"
+	}
+	else if (format == "DARKGRAY")
+	{
+		return "\x1b[38;5;59m";
+	}
+	else if (format == "BLUE")
+	{
+		return "\x1b[38;5;63m";
+	}
+	else if (format == "GREEN")
+	{
+		return "\x1b[38;5;83m";
+	}
+	else if (format == "AQUA")
+	{
+		return "\x1b[38;5;87m";
+	}
+	else if (format == "RED")
+	{
+		return "\x1b[38;5;203m";
+	}
+	else if (format == "LIGHTPURPLE")
+	{
+		return "\x1b[38;5;207m";
+	}
+	else if (format == "YELLOW")
+	{
+		return "\x1b[38;5;227m";
+	}
+	else if (format == "WHITE")
+	{
+		return "\x1b[38;5;231m";
+	}
+	else {
+		printf("Unknow format: %s", format);
+	}
 }
 
 int main(int argc, char* argv[])
