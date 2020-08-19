@@ -4,6 +4,9 @@
  *  |  __/| | |___| | | (_| |  _| ||_____| |  | |  __/ 
  *  |_|  |___\____|_|  \__,_|_|  \__|    |_|  |_|_|    
  *
+ *
+ * Copyright Alvarito050506, MFDGaming 2020
+ *
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
  * distributed with this work for additional information
