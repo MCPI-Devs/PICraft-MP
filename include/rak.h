@@ -23,25 +23,13 @@
  * 
  */
 
-#include <stdio.h>
-#include <math.h>
-#include <time.h>
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <arpa/inet.h>
+#ifndef RAK_H
+#define RAK_H
 
-#include <packets.h>
+typedef struct rak_config_t {
+	int port;
+	int fd;
+	char* motd;
+} rak_config_t;
 
-#define TRUE ((void*)1)
-#define FALSE !(TRUE)
-
-static volatile int terminated;
-
-int main(int argc, char* argv[])
-{
-	while (!terminated)
-	{
-		continue;
-	}
-	return 0;
-}
+#endif /* RAK_H */

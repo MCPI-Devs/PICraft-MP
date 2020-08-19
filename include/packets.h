@@ -23,25 +23,43 @@
  * 
  */
 
-#include <stdio.h>
-#include <math.h>
-#include <time.h>
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <arpa/inet.h>
+#ifndef PACKETS_H
+#define PACKETS_H
 
-#include <packets.h>
+typedef struct base_packet_t {
+	unsigned char prefix;
+	unsigned char iteration;
+	unsigned char padding[2];
+	unsigned char encapsulation;
+	unsigned char length;
+} base_packet_t;
 
-#define TRUE ((void*)1)
-#define FALSE !(TRUE)
+typedef struct raw_packet_t {
+	base_packet_t base;
 
-static volatile int terminated;
+	unsigned char* data;
+} raw_packet_t;
 
-int main(int argc, char* argv[])
-{
-	while (!terminated)
-	{
-		continue;
-	}
-	return 0;
-}
+typedef struct q_packet_t {
+	base_packet_t base;
+
+	unsigned char padding[3];
+	unsigned char id;
+	unsigned char* data;
+} q_packet_t;
+
+typedef struct s_packet_t {
+	base_packet_t base;
+
+	unsigned char padding[7];
+	unsigned char id;
+	unsigned char* data;
+} s_packet_t;
+
+typedef union mcpi_packet_t {
+	raw_packet_t raw;
+	q_packet_t q;
+	s_packet_t s;
+} mcpi_packet_t;
+
+#endif /* PACKETS_H */

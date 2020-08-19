@@ -23,25 +23,56 @@
  * 
  */
 
-#include <stdio.h>
-#include <math.h>
-#include <time.h>
+#include <rak.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>
 
-#include <packets.h>
-
-#define TRUE ((void*)1)
-#define FALSE !(TRUE)
-
-static volatile int terminated;
-
-int main(int argc, char* argv[])
+int rak_handle_ping(rak_config_t config, struct sockaddr_in addr, unsigned char* packet)
 {
-	while (!terminated)
+	return 0;
+}
+
+int rak_run(int port, char* motd)
+{
+	int rt;
+	struct sockaddr_in addr;
+	struct sockaddr_in client_addr;
+	int client_len = sizeof(client_addr);
+	char buffer[2048];
+	rak_config_t config;
+
+	config.fd = socket(AF_INET, SOCK_DGRAM, 0);
+	if (config.fd < 0)
 	{
-		continue;
+		fprintf(stderr, "Error while opening socket.\n");
+		return -1;
 	}
+	config.motd = motd;
+	setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, TRUE, sizeof(int));
+	memset((char*)&addr, 0x00, sizeof(addr));
+	addr.sin_family = AF_INET;
+	addr.sin_addr.s_addr = htonl(INADDR_ANY);
+	addr.sin_port = htons(port);
+	rt = bind(config.fd, (struct sockaddr*)&addr, sizeof(addr));
+	if (rt < 0)
+	{
+		fprintf(stderr, "Error while binding.\n");
+		return -1;
+	}
+
+	while (TRUE)
+	{
+		memset(buffer, 0x00, 2048);
+		rt = recvfrom(config.fd, buffer, 2048, 0, (struct sockaddr*)&client_addr, &client_len);
+		switch (buffer[0])
+		{
+			case 0x01:
+			case 0x02:
+				rak_handle_ping(config.fd, client_addr, buffer);
+			break;
+		}
+	}
+	close(config.fd);
 	return 0;
 }

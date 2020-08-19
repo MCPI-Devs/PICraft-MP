@@ -23,25 +23,11 @@
  * 
  */
 
-#include <stdio.h>
-#include <math.h>
-#include <time.h>
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <arpa/inet.h>
+#ifndef HANDLERS_H
+#define HANDLERS_H
 
-#include <packets.h>
+typedef int (*handler_t)(int fd, mcpi_packet_t packet);
 
-#define TRUE ((void*)1)
-#define FALSE !(TRUE)
+handler_t handlers[53]; /* 52 documented packets + weird ping packet. */
 
-static volatile int terminated;
-
-int main(int argc, char* argv[])
-{
-	while (!terminated)
-	{
-		continue;
-	}
-	return 0;
-}
+#endif /* HANDLERS_H */
