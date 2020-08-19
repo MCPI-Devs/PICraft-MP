@@ -37,15 +37,19 @@
 
 static volatile int terminated;
 
-char text-format(char* color)
+char text-format(char* format)
 {
-	if (color == "BOLD")
+	if (format == "BOLD")
 	{
-		return "\x1b[1m"
+		return "\x1b[1m";
 	}
-	else if (color == "OBFUSCATED")
+	else if (format == "OBFUSCATED")
 	{
-		return ""
+		return "";
+	}
+	else if (format == "ITALIC")
+	{
+		return "\x1b[3m";
 	}
 }
 
