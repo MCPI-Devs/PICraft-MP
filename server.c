@@ -187,6 +187,7 @@ int logger(char* type, char* message)
 
 int command_interpreter()
 {
+	printf("> ");
 	char input[256];
 	scanf("%s", input);
 	if(compstr(input, "help") == 0)
