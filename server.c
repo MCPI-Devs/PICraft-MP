@@ -183,6 +183,16 @@ int logger(char* type, char* message)
                 printf("%s \n", message);
 		printf("%s", text_format("RESET"));
         }
+	if (type == "error")
+        {
+                printf("%s", text_format("GOLD"));
+                printf("[%s] ", get_current_time());
+                printf("%s", text_format("RED"));
+                printf("ERROR => ");
+                printf("%s", text_format("AQUA"));
+                printf("%s \n", message);
+		printf("%s", text_format("RESET"));
+        }
 }
 
 int command_interpreter()
@@ -201,7 +211,7 @@ int command_interpreter()
 	}
 	else
 	{
-		logger("info", "Invalid Command!");
+		logger("error", "Invalid Command!");
 		return 0;
 	}
 }
