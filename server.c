@@ -51,6 +51,18 @@ char text-format(char* format)
 	{
 		return "\x1b[3m";
 	}
+	else if (format == "UNDERLINE")
+	{
+		return "\x1b[4m";
+	}
+	else if (format == "STRIKETHROUGH")
+	{
+		return "\x1b[9m";
+	}
+	else if (format == "RESET")
+	{
+		return "\x1b[m";
+	}
 }
 
 int main(int argc, char* argv[])
