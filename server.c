@@ -40,7 +40,7 @@
 
 static volatile int terminated;
 
-char text-format(char* format)
+char text_format(char* format)
 {
 	if (format == "BOLD")
 	{
