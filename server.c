@@ -37,6 +37,18 @@
 
 static volatile int terminated;
 
+char text-format(char* color)
+{
+	if (color == "BOLD")
+	{
+		return "\x1b[1m"
+	}
+	else if (color == "OBFUSCATED")
+	{
+		return ""
+	}
+}
+
 int main(int argc, char* argv[])
 {
 	while (!terminated)
