@@ -27,6 +27,7 @@
  */
 
 #include <stdio.h>
+#include <string.h>
 #include <math.h>
 #include <time.h>
 #include <sys/types.h>
@@ -40,7 +41,7 @@
 
 static volatile int terminated;
 
-char text_format(char* format)
+char * text_format(char* format)
 {
 	if (format == "BOLD")
 	{
