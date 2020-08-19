@@ -132,7 +132,7 @@ char* text_format(char* format)
 		return "\x1b[38;5;231m";
 	}
 	else {
-		printf("Unknow format: %s", format);
+		printf("Unknow format: %s \n", format);
 	}
 }
 
