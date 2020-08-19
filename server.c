@@ -181,6 +181,7 @@ int logger(char* type, char* message)
                 printf("INFO => ");
                 printf("%s", text_format("AQUA"));
                 printf("%s \n", message);
+		printf("%s", text_format("RESET"));
         }
 }
 
