@@ -97,7 +97,7 @@ char* text_format(char* format)
 	}
 	else if (format == "GRAY")
 	{
-		return "\x1b[38;5;145m"
+		return "\x1b[38;5;145m";
 	}
 	else if (format == "DARKGRAY")
 	{
