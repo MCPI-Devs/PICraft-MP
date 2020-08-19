@@ -49,7 +49,7 @@ long long bin2longlong_d(char* data)
 	tlonglong |= (long long) data[2] << 40;
 	tlonglong |= (long long) data[3] << 32;
 	tlonglong |= (long long) data[4] << 24;
-	tlonglong |= (long long) data[5] << 24;
+	tlonglong |= (long long) data[5] << 16;
 	tlonglong |= (long long) data[6] << 8;
 	tlonglong |= (long long) data[7];
 	return tlonglong;
