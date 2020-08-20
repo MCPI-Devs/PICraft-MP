@@ -75,6 +75,13 @@ int bin2double_d(char* data)
 	return (double) tdouble;
 }
 
+char bin2byte_d(char* data)
+{
+	char tbyte;
+	tbyte = data[0];
+	return tbyte;
+}
+
 int unpack(char* type, char* data)
 {
 	if (type == "i")
