@@ -64,6 +64,34 @@ unsigned int flip_uint_endianess(unsigned int value)
 	return (value >> 24) | (value << 8) & 0x00FF0000 | (value >> 8) & 0x00FF0000 | (value << 24);
 }
 
+long long flip_long_endianess(long long value)
+{
+	long long flipped_long;
+	flipped_long = value >> 56; 
+	flipped_long |= (value << 40) & 0x00FF000000000000;
+	flipped_long |= (value << 24) & 0x0000FF0000000000;
+	flipped_long |= (value << 8) & 0x000000FF00000000;
+	flipped_long |= (value >> 8) & 0x00000000FF000000;
+	flipped_long |= (value >> 24) & 0x0000000000FF0000;
+	flipped_long |= (value >> 40) & 0x000000000000FF00;
+	flipped_long |= value << 56;
+	return flipped_long;
+}
+
+unsigned long long flip_ulong_endianess(unsigned long long value)
+{
+	unsigned long long flipped_long;
+	flipped_long = value >> 56; 
+	flipped_long |= (value << 40) & 0x00FF000000000000;
+	flipped_long |= (value << 24) & 0x0000FF0000000000;
+	flipped_long |= (value << 8) & 0x000000FF00000000;
+	flipped_long |= (value >> 8) & 0x00000000FF000000;
+	flipped_long |= (value >> 24) & 0x0000000000FF0000;
+	flipped_long |= (value >> 40) & 0x000000000000FF00;
+	flipped_long |= value << 56;
+	return flipped_long;
+}
+
 int bin2int_d(char* data)
 {
 	check_length(data, 4);
