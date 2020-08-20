@@ -75,11 +75,18 @@ int bin2double_d(char* data)
 	return (double) tdouble;
 }
 
-char bin2byte_d(char* data)
+char bin2char_d(char* data)
 {
-	char tbyte;
-	tbyte = data[0];
-	return tbyte;
+	char tchar;
+	tchar = data[0];
+	return tchar;
+}
+
+int bin2schar_d(char* data)
+{
+	int tchar;
+	tchar = data[0];
+	return tchar;
 }
 
 int unpack(char* type, char* data)
