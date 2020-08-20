@@ -4,9 +4,6 @@
  *  |  __/| | |___| | | (_| |  _| ||_____| |  | |  __/ 
  *  |_|  |___\____|_|  \__,_|_|  \__|    |_|  |_|_|    
  *
- *
- * Copyright Alvarito050506, MFDGaming 2020
- *
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
  * distributed with this work for additional information
@@ -35,60 +32,34 @@
 #include <sys/socket.h>
 #include <arpa/inet.h>
 
-//#include <packets.h>
-#include <fancy.h>
-
-#define TRUE (1)
-#define FALSE !(TRUE)
+#include <packets.h>
+#include <misc.h>
 
 static int terminated;
 
-int compstr(char* str1, char* str2)
-{
-	int str1len = strlen(str1);
-	int str2len = strlen(str2);
-	int len;
-	if (str1len > str2len)
-	{
-		len = str1len;
-	} else
-	{
-		len = str2len;
-	}
-	for (int i = 0; i < len; i++)
-	{
-		if (str1len != str2len || str1[i] != str2[i])
-		{
-			return 1;
-		}
-	}
-	return 0;
-}
-
+/* Segfaulty method. */
 char* get_current_time()
 {
-	char* tmp_str = malloc(10);
+	char* tmp_str = malloc(11);
 	time_t now = time(NULL);
 	struct tm *now_tm = localtime(&now);
 	int now_h = now_tm->tm_hour;
 	int now_m = now_tm->tm_min;
 	int now_s = now_tm->tm_sec;
 
-	sprintf(tmp_str, "%d:%d:%d", now_h, now_m, now_s);
+	sprintf(tmp_str, "%02d:%02d:%02d", now_h, now_m, now_s);
 	return tmp_str;
 }
 
 int logger(text_style_t type, char* message)
 {
-	char* time = get_current_time();
 	if (type == INFO)
 	{
-		printf(GOLD "[%s] " BLUE "INFO => " AQUA "%s \n" RESET, time, message);
+		printf(BLUE "INFO => " AQUA "%s \n" RESET, message);
 	} else if (type == ERROR)
 	{
-		printf(GOLD "[%s] " RED "ERROR => " AQUA "%s \n" RESET, time, message);
+		printf(RED "ERROR => " AQUA "%s \n" RESET, message);
 	}
-	free(time);
 	return 0;
 }
 

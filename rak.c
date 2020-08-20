@@ -23,10 +23,16 @@
  * 
  */
 
-#include <rak.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>
+
+#include <rak.h>
+#include <misc.h>
 
 int rak_handle_ping(rak_config_t config, struct sockaddr_in addr, unsigned char* packet)
 {
@@ -38,7 +44,7 @@ int rak_run(int port, char* motd)
 	int rt;
 	struct sockaddr_in addr;
 	struct sockaddr_in client_addr;
-	int client_len = sizeof(client_addr);
+	unsigned int client_len = sizeof(client_addr);
 	char buffer[2048];
 	rak_config_t config;
 
@@ -49,7 +55,7 @@ int rak_run(int port, char* motd)
 		return -1;
 	}
 	config.motd = motd;
-	setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, TRUE, sizeof(int));
+	setsockopt(config.fd, SOL_SOCKET, SO_REUSEADDR, (void*)TRUE, sizeof(int));
 	memset((char*)&addr, 0x00, sizeof(addr));
 	addr.sin_family = AF_INET;
 	addr.sin_addr.s_addr = htonl(INADDR_ANY);
@@ -69,7 +75,7 @@ int rak_run(int port, char* motd)
 		{
 			case 0x01:
 			case 0x02:
-				rak_handle_ping(config.fd, client_addr, buffer);
+				rak_handle_ping(config, client_addr, (unsigned char*)buffer);
 			break;
 		}
 	}

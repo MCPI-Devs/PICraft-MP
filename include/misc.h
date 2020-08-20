@@ -23,8 +23,11 @@
  * 
  */
 
-#ifndef FANCY_H
-#define FANCY_H
+#ifndef MISC_H
+#define MISC_H
+
+#define TRUE (1)
+#define FALSE !(TRUE)
 
 #define BOLD "\x1b[1m"
 #define OBFUSCATED ""
@@ -49,34 +52,27 @@
 #define YELLOW "\x1b[38;5;227m"
 #define WHITE "\x1b[38;5;231m"
 
-/*typedef enum text_style_t {
-	BOLD,
-	OBFUSCATED,
-	ITALIC,
-	UNDERLINE,
-	STRIKE,
-	RESET,
-	BLACK,
-	DARKBLUE,
-	DARKGREEN,
-	DARKAQUA,
-	DARKRED,
-	PURPLE,
-	GOLD,
-	GRAY,
-	DARKGRAY,
-	BLUE,
-	GREEN,
-	AQUA,
-	RED,
-	LIGHTPURPLE,
-	YELLOW,
-	WHITE
-} text_style_t;*/
-
 typedef enum text_style_t {
 	INFO,
 	ERROR
 } text_style_t;
 
-#endif /* FANCY_H */
+typedef enum endianess_t {
+	BIG_END,
+	LITTLE_END
+} endianess_t;
+
+typedef union all_the_t {
+	short tshort;
+	int tint;
+	long long tlong;
+	float tfloat;
+	double tdouble;
+	unsigned short tushort;
+	unsigned int tuint;
+	unsigned long long tulong;
+} all_the_t;
+
+all_the_t unpack(endianess_t endianess, void* data);
+
+#endif /* MISC_H */

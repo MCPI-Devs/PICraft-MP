@@ -1,6 +1,6 @@
-# I am speed
+# I am (not so) speed
+CFLAGS:=-g
 INCLUDES:=-I./include
 
 all:
-	#gcc -Wall -fPIC $(CFLAGS) $(INCLUDES) *.c -o pcmp.elf
-	gcc -Wall -fPIC $(INCLUDES) server.c -o pcmp.elf
+	gcc -Wall -fPIC $(CFLAGS) $(INCLUDES) *.c -o pcmp

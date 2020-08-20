@@ -1,2 +1,9 @@
 # Build
+pcmp
+pcmp.so
+pcmp.a
+pcmp.lib
+pcmp.exe
 pcmp.elf
+libpcmp.a
+libpcmp.so
