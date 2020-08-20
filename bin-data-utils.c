@@ -75,7 +75,7 @@ long long bin2longlong_d(char* data)
 	return tlonglong;
 }
 
-long long bin2ulonglong_d(char* data)
+unsigned long long bin2ulonglong_d(char* data)
 {
 	unsigned long long tlonglong;
 	tlonglong = (unsigned long long) data[0];
