@@ -138,6 +138,13 @@ int bin2uchar_d(char* data)
 	return tchar;
 }
 
+int bin2bool_d(char* data)
+{
+	int tbool;
+	tbool = data[0] >= 1 ? 1 : 0;
+	return tbool;
+}
+
 int unpack(char* type, char* data)
 {
 	if (type == "i")
