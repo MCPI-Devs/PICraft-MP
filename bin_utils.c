@@ -29,6 +29,16 @@
 
 #include <misc.h>
 
+int check_length(char* data, int len)
+{
+	int data_len = strlen(data);
+	if (data_len != len)
+	{
+		printf("Expected %d, got %d", len, data_len)
+		return FALSE
+	}
+}
+
 endianess_t get_endianess()
 {
 	union
