@@ -119,8 +119,18 @@ float bin2float_d(char* data)
 	return b2f.tfloat;
 }
 
-int bin2double_d(char* data)
+double bin2double_d(char* data)
 {
+	union
+	{
+		char stream[4];
+		double tdouble;
+	} b2f;
+	b2f.stream[0] = data[0];
+	b2f.stream[1] = data[1];
+	b2f.stream[2] = data[2];
+	b2f.stream[3] = data[3];
+	return b2f.tdouble;
 }
 
 char bin2char_d(char* data)
