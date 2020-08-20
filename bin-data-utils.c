@@ -107,14 +107,10 @@ short bin2ushort_d(char* data)
 
 float bin2float_d(char* data)
 {
-	int tfloat = (data[0] << 24) | (data[1] << 16) | (data[2] << 8) | data[3];
-	return tfloat;
 }
 
 int bin2double_d(char* data)
 {
-	double tdouble = ((long long) data[0] << 56) | ((long long) data[1] << 48) | ((long long) data[2] << 40) | ((long long) data[3] << 32) | ((long long) data[4] << 24) | ((long long) data[5] << 24) | ((long long) data[6] << 8) | (long long) data[7];
-	return (double) tdouble;
 }
 
 char bin2char_d(char* data)
