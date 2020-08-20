@@ -56,16 +56,19 @@ int get_endianess()
 
 int bin2int_d(char* data)
 {
+	check_length(data, 4);
 	return data[0] | (data[1] << 8) | (data[2] << 16) | (data[3] << 24);
 }
 
 unsigned int bin2uint_d(char* data)
 {
+	check_length(data, 4);
 	return (unsigned int)(data[0] | (data[1] << 8) | (data[2] << 16) | (data[3] << 24));
 }
 
 long long bin2long_d(char* data)
 {
+	check_length(data, 8);
 	long long tlong;
 	tlong = (long long)data[0] | (long long)data[1] << 8 | (long long)data[2] << 16 | (long long)data[3] << 24;
 	tlong |= (long long)data[4] << 32 | (long long)data[5] << 40 | (long long)data[6] << 48 | (long long)data[7] << 56;
@@ -74,6 +77,7 @@ long long bin2long_d(char* data)
 
 unsigned long long bin2ulong_d(char* data)
 {
+	check_length(data, 8);
 	long long tlong;
 	tlong = (long long)data[0] | (long long)data[1] << 8 | (long long)data[2] << 16 | (long long)data[3] << 24;
 	tlong |= (long long)data[4] << 32 | (long long)data[5] << 40 | (long long)data[6] << 48 | (long long)data[7] << 56;
@@ -82,16 +86,19 @@ unsigned long long bin2ulong_d(char* data)
 
 short bin2short_d(char* data)
 {
+	check_length(data, 2);
 	return data[0] | data[1] << 8;
 }
 
 unsigned short bin2ushort_d(char* data)
 {
+	check_length(data, 2);
 	return (unsigned short)(data[0] | data[1] << 8);
 }
 
 float bin2float_d(char* data)
 {
+	check_length(data, 4);
 	float tfloat;
 	memcpy(&tfloat, data, sizeof(float));
 	return tfloat;
@@ -99,6 +106,7 @@ float bin2float_d(char* data)
 
 double bin2double_d(char* data)
 {
+	check_length(data, 8);
 	double tdouble;
 	memcpy(&tdouble, data, sizeof(double));
 	return tdouble;
@@ -106,6 +114,7 @@ double bin2double_d(char* data)
 
 int bin2bool_d(char* data)
 {
+	check_length(data, 1);
 	return data[0] >= 1 ? 1 : 0;
 }
 
