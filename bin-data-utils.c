@@ -34,10 +34,10 @@ int bin2int_d(char* data)
 long bin2long_d(char* data)
 {
 	long tlong; 
-	tlong = data[0] << 24;
-	tlong |= data[1] << 16;
-	tlong |= data[2] << 8;
-	tlong |= data[3];
+	tlong = data[0];
+	tlong |= data[1] << 8;
+	tlong |= data[2] << 16;
+	tlong |= data[3] << 24;
 	return tlong;
 }
 
