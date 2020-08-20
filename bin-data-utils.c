@@ -78,14 +78,14 @@ long long bin2longlong_d(char* data)
 long long bin2ulonglong_d(char* data)
 {
 	unsigned long long tlonglong;
-	unsigned tlonglong = (unsigned long long) data[0];
-	unsigned tlonglong |= (unsigned long long) data[1] << 8;
-	unsigned tlonglong |= (unsigned long long) data[2] << 16;
-	unsigned tlonglong |= (unsigned long long) data[3] << 24;
-	unsigned tlonglong |= (unsigned long long) data[4] << 32;
-	unsigned tlonglong |= (unsigned long long) data[5] << 40;
-	unsigned tlonglong |= (unsigned long long) data[6] << 48;
-	unsigned tlonglong |= (unsigned long long) data[7] << 56;
+	tlonglong = (unsigned long long) data[0];
+	tlonglong |= (unsigned long long) data[1] << 8;
+	tlonglong |= (unsigned long long) data[2] << 16;
+	tlonglong |= (unsigned long long) data[3] << 24;
+	tlonglong |= (unsigned long long) data[4] << 32;
+	tlonglong |= (unsigned long long) data[5] << 40;
+	tlonglong |= (unsigned long long) data[6] << 48;
+	tlonglong |= (unsigned long long) data[7] << 56;
 	return tlonglong;
 }
 
