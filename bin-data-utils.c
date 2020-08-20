@@ -31,9 +31,29 @@ int bin2int_d(char* data)
 	return tint;
 }
 
+int bin2uint_d(char* data)
+{
+	unsigned int tint; 
+	tint = data[0];
+	tint |= data[1] << 8;
+	tint |= data[2] << 16;
+	tint |= data[3] << 24;
+	return tint;
+}
+
 long bin2long_d(char* data)
 {
 	long tlong; 
+	tlong = data[0];
+	tlong |= data[1] << 8;
+	tlong |= data[2] << 16;
+	tlong |= data[3] << 24;
+	return tlong;
+}
+
+long bin2ulong_d(char* data)
+{
+	unsigned long tlong; 
 	tlong = data[0];
 	tlong |= data[1] << 8;
 	tlong |= data[2] << 16;
@@ -55,9 +75,31 @@ long long bin2longlong_d(char* data)
 	return tlonglong;
 }
 
+long long bin2ulonglong_d(char* data)
+{
+	unsigned long long tlonglong;
+	unsigned tlonglong = (unsigned long long) data[0];
+	unsigned tlonglong |= (unsigned long long) data[1] << 8;
+	unsigned tlonglong |= (unsigned long long) data[2] << 16;
+	unsigned tlonglong |= (unsigned long long) data[3] << 24;
+	unsigned tlonglong |= (unsigned long long) data[4] << 32;
+	unsigned tlonglong |= (unsigned long long) data[5] << 40;
+	unsigned tlonglong |= (unsigned long long) data[6] << 48;
+	unsigned tlonglong |= (unsigned long long) data[7] << 56;
+	return tlonglong;
+}
+
 short bin2short_d(char* data)
 {
 	short tshort;
+	tshort = data[0]; 
+	tshort |= data[1] << 8;
+	return tshort;
+}
+
+short bin2ushort_d(char* data)
+{
+	unsigned short tshort;
 	tshort = data[0]; 
 	tshort |= data[1] << 8;
 	return tshort;
@@ -85,6 +127,13 @@ char bin2char_d(char* data)
 int bin2schar_d(char* data)
 {
 	int tchar;
+	tchar = data[0];
+	return tchar;
+}
+
+int bin2uchar_d(char* data)
+{
+	unsigned int tchar;
 	tchar = data[0];
 	return tchar;
 }
