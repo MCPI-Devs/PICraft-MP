@@ -123,13 +123,17 @@ double bin2double_d(char* data)
 {
 	union
 	{
-		char stream[4];
+		char stream[8];
 		double tdouble;
 	} b2f;
 	b2f.stream[0] = data[0];
 	b2f.stream[1] = data[1];
 	b2f.stream[2] = data[2];
 	b2f.stream[3] = data[3];
+	b2f.stream[4] = data[4];
+	b2f.stream[5] = data[5];
+	b2f.stream[6] = data[6];
+	b2f.stream[7] = data[7];
 	return b2f.tdouble;
 }
 
