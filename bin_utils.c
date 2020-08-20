@@ -35,7 +35,7 @@ int check_length(char* data, int len)
 	if (data_len != len)
 	{
 		printf("Expected %d, got %d", len, data_len);
-		return FALSE;
+		exit(1);
 	}
 }
 
