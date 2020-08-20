@@ -29,7 +29,7 @@
 
 #include <misc.h>
 
-int check_length(char* data, int len)
+void check_length(char* data, int len)
 {
 	int data_len = strlen(data);
 	if (data_len != len)
@@ -103,7 +103,7 @@ double bin2double_d(char* data)
 
 int bin2bool_d(char* data)
 {
-	return data[0] >= TRUE ? TRUE : FALSE;
+	return data[0] >= 1 ? 1 : 0;
 }
 
 /* TODO: Implement different endianesses. */
