@@ -153,6 +153,47 @@ int unpack(char* type, char* data)
 	}
 	else if (type == "I")
 	{
+		bin2uint_d(data);
+	}
+	else if (type == "l")
+	{
+		bin2long_d(data);
+	}
+	else if (type == "L")
+	{
+		bin2ulong_d(data);
+	}
+	else if (type == "q")
+	{
+		bin2longlong_d(data);
+	}
+	else if (type == "Q")
+	{
+		bin2ulonglong_d(data);
+	}
+	else if (type == "h")
+	{
+		bin2short_d(data);
+	}
+	else if (type == "H")
+	{
+		bin2ushort_d(data);
+	}
+	else if (type == "c")
+	{
+		bin2char_d(data);
+	}
+	else if (type == "b")
+	{
+		bin2schar_d(data);
+	}
+	else if (type == "B")
+	{
+		bin2uchar_d(data);
+	}
+	else if (type == "?")
+	{
+		bin2bool_d(data);
 	} else
 	{
 		printf("Unknown type: %s\n", type);
