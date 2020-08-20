@@ -79,24 +79,16 @@ unsigned short bin2ushort_d(char* data)
 
 float bin2float_d(char* data)
 {
-	union
-	{
-		char buffer[4];
-		float tfloat;
-	} b2f;
-	memcpy(&b2f.buffer, data, sizeof(float));
-	return b2f.tfloat;
+	float tfloat;
+	memcpy(&tfloat, data, sizeof(float));
+	return tfloat;
 }
 
 double bin2double_d(char* data)
 {
-	union
-	{
-		char buffer[8];
-		double tdouble;
-	} b2f;
-	memcpy(&b2f.buffer, data, sizeof(double));
-	return b2f.tdouble;
+	double tdouble;
+	memcpy(&tdouble, data, sizeof(double));
+	return tdouble;
 }
 
 int bin2bool_d(char* data)
