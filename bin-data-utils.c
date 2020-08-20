@@ -116,8 +116,6 @@ float bin2float_d(char* data)
 	b2f.stream[1] = data[1];
 	b2f.stream[2] = data[2];
 	b2f.stream[3] = data[3];
-	printf("%f", b2f.tfloat);
-	printf("\n");
 	return b2f.tfloat;
 }
 
