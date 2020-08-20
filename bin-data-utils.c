@@ -24,10 +24,10 @@ int endianess()
 int bin2int_d(char* data)
 {
 	int tint; 
-	tint = data[0] << 24;
-	tint |= data[1] << 16;
-	tint |= data[2] << 8;
-	tint |= data[3];
+	tint = data[0];
+	tint |= data[1] << 8;
+	tint |= data[2] << 16;
+	tint |= data[3] << 24;
 	return tint;
 }
 
