@@ -54,6 +54,16 @@ int get_endianess()
 	return x.c[0] == 1 ? LITTLE_ENDIAN : BIG_ENDIAN;
 }
 
+int flip_int_endianess(int value)
+{
+	return (value >> 24) | (value << 8) & 0x00FF0000 | (value >> 8) & 0x00FF0000 | (value << 24);
+}
+
+unsigned int flip_uint_endianess(unsigned int value)
+{
+	return (value >> 24) | (value << 8) & 0x00FF0000 | (value >> 8) & 0x00FF0000 | (value << 24);
+}
+
 int bin2int_d(char* data)
 {
 	check_length(data, 4);
