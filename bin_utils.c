@@ -29,6 +29,9 @@
 
 #include <misc.h>
 
+#define BIG_ENDIAN 0x00
+#define LITTLE_ENDIAN 0x01
+
 void check_length(char* data, int len)
 {
 	int data_len = strlen(data);
@@ -39,7 +42,7 @@ void check_length(char* data, int len)
 	}
 }
 
-endianess_t get_endianess()
+int get_endianess()
 {
 	union
 	{
@@ -48,7 +51,7 @@ endianess_t get_endianess()
 	} x;
 	x.i = 1;
 
-	return x.c[0] == 1 ? LITTLE_END : BIG_END;
+	return x.c[0] == 1 ? LITTLE_ENDIAN : BIG_ENDIAN;
 }
 
 int bin2int_d(char* data)
@@ -107,7 +110,7 @@ int bin2bool_d(char* data)
 }
 
 /* TODO: Implement different endianesses. */
-all_the_t unpack(endianess_t endianess, void* data)
+all_the_t unpack(int endianess, void* data)
 {
 	all_the_t final;
 	char* buffer = data;
