@@ -104,6 +104,7 @@ unsigned short flip_ushort_endianess(unsigned short value)
 	return (value >> 8) | (value << 8);
 }
 
+// Still expiremental
 float flip_float_endianess(float value)
 {
 	union
@@ -114,6 +115,19 @@ float flip_float_endianess(float value)
 	flip.f = value;
 	flip.i = htonl(flip.i);
 	return flip.f;		
+}
+
+// Still expiremental
+float flip_double_endianess(double value)
+{
+	union
+	{
+		double d;
+		long long l;
+	} flip;
+	flip.d = value;
+	flip.l = htonl(flip.l);
+	return flip.d;		
 }
 
 int bin2int_d(char* data)
