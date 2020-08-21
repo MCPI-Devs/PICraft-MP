@@ -31,8 +31,8 @@
 
 #include <arpa/inet.h>
 
-#define BIG_ENDIAN 0x00
-#define LITTLE_ENDIAN 0x01
+#define BIG_END 0x00
+#define LITTLE_END 0x01
 
 void check_length(char* data, int len)
 {
@@ -53,7 +53,7 @@ int get_endianess()
 	} x;
 	x.i = 1;
 
-	return x.c[0] == 1 ? LITTLE_ENDIAN : BIG_ENDIAN;
+	return x.c[0] == 1 ? LITTLE_END : BIG_END;
 }
 
 int flip_int_endianess(int value)
@@ -182,62 +182,62 @@ int bin2bool_d(char* data)
 
 int bin2int_b(char* data)
 {
-	return get_endianess() == BIG_ENDIAN ? bin2int_d(data) : flip_int_endianess(bin2int_d(data));
+	return get_endianess() == BIG_END ? bin2int_d(data) : flip_int_endianess(bin2int_d(data));
 }
 
 unsigned int bin2uint_b(char* data)
 {
-	return get_endianess() == BIG_ENDIAN ? bin2uint_d(data) : flip_uint_endianess(bin2uint_d(data));
+	return get_endianess() == BIG_END ? bin2uint_d(data) : flip_uint_endianess(bin2uint_d(data));
 }
 
 long long bin2long_b(char* data)
 {
-	return get_endianess() == BIG_ENDIAN ? bin2long_d(data) : flip_long_endianess(bin2long_d(data));
+	return get_endianess() == BIG_END ? bin2long_d(data) : flip_long_endianess(bin2long_d(data));
 }
 
 unsigned long long bin2ulong_b(char* data)
 {
-	return get_endianess() == BIG_ENDIAN ? bin2ulong_d(data) : flip_ulong_endianess(bin2ulong_d(data));
+	return get_endianess() == BIG_END ? bin2ulong_d(data) : flip_ulong_endianess(bin2ulong_d(data));
 }
 
-short bin2long_b(char* data)
+short bin2short_b(char* data)
 {
-	return get_endianess() == BIG_ENDIAN ? bin2short_d(data) : flip_short_endianess(bin2short_d(data));
+	return get_endianess() == BIG_END ? bin2short_d(data) : flip_short_endianess(bin2short_d(data));
 }
 
 unsigned short bin2ushort_b(char* data)
 {
-	return get_endianess() == BIG_ENDIAN ? bin2ushort_d(data) : flip_ushort_endianess(bin2ushort_d(data));
+	return get_endianess() == BIG_END ? bin2ushort_d(data) : flip_ushort_endianess(bin2ushort_d(data));
 }
 
 int bin2int_l(char* data)
 {
-	return get_endianess() == LITTLE_ENDIAN ? bin2int_d(data) : flip_int_endianess(bin2int_d(data));
+	return get_endianess() == LITTLE_END ? bin2int_d(data) : flip_int_endianess(bin2int_d(data));
 }
 
 unsigned int bin2uint_l(char* data)
 {
-	return get_endianess() == LITTLE_ENDIAN ? bin2uint_d(data) : flip_uint_endianess(bin2uint_d(data));
+	return get_endianess() == LITTLE_END ? bin2uint_d(data) : flip_uint_endianess(bin2uint_d(data));
 }
 
 long long bin2long_l(char* data)
 {
-	return get_endianess() == LITTLE_ENDIAN ? bin2long_d(data) : flip_long_endianess(bin2long_d(data));
+	return get_endianess() == LITTLE_END ? bin2long_d(data) : flip_long_endianess(bin2long_d(data));
 }
 
 unsigned long long bin2ulong_l(char* data)
 {
-	return get_endianess() == LITTLE_ENDIAN ? bin2ulong_d(data) : flip_ulong_endianess(bin2ulong_d(data));
+	return get_endianess() == LITTLE_END ? bin2ulong_d(data) : flip_ulong_endianess(bin2ulong_d(data));
 }
 
-short bin2long_l(char* data)
+short bin2short_l(char* data)
 {
-	return get_endianess() == LITTLE_ENDIAN ? bin2short_d(data) : flip_short_endianess(bin2short_d(data));
+	return get_endianess() == LITTLE_END ? bin2short_d(data) : flip_short_endianess(bin2short_d(data));
 }
 
 unsigned short bin2ushort_l(char* data)
 {
-	return get_endianess() == LITTLE_ENDIAN ? bin2ushort_d(data) : flip_ushort_endianess(bin2ushort_d(data));
+	return get_endianess() == LITTLE_END ? bin2ushort_d(data) : flip_ushort_endianess(bin2ushort_d(data));
 }
 
 /* TODO: Implement different endianesses. */
@@ -256,4 +256,3 @@ all_the_t unpack(int endianess, void* data)
 	final.tulong = bin2ulong_d(buffer);
 	return final;
 }
-
