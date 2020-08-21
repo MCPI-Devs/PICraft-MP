@@ -29,6 +29,9 @@
 #define TRUE (1)
 #define FALSE !(TRUE)
 
+#define BIG_END 0x00
+#define LITTLE_END 0x01
+
 #define BOLD "\x1b[1m"
 #define OBFUSCATED ""
 #define ITALIC "\x1b[3m"
