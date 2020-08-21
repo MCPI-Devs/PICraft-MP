@@ -31,9 +31,6 @@
 
 #include <arpa/inet.h>
 
-#define BIG_END 0x00
-#define LITTLE_END 0x01
-
 void check_length(char* data, int len)
 {
 	int data_len = strlen(data);
