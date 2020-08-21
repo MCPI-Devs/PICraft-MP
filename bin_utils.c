@@ -102,6 +102,12 @@ unsigned short flip_ushort_endianess(unsigned short value)
 	return (value >> 8) | (value << 8);
 }
 
+float flip_float_endianess(float value)
+{
+	int temp = htonl(*(unsigned int*)&value);
+	return *(float*)&temp;		
+}
+
 int bin2int_d(char* data)
 {
 	check_length(data, 4);
