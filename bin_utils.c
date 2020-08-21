@@ -27,6 +27,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <arpa/inet.h>
+
 #include <misc.h>
 
 #define BIG_ENDIAN 0x00
