@@ -104,8 +104,14 @@ unsigned short flip_ushort_endianess(unsigned short value)
 
 float flip_float_endianess(float value)
 {
-	int temp = htonl(*(unsigned int*)&value);
-	return *(float*)&temp;		
+	union
+	{
+		float f;
+		int i;
+	} flip;
+	flip.f = value;
+	flip.i = htonl(flip.i);
+	return flip.f;		
 }
 
 int bin2int_d(char* data)
