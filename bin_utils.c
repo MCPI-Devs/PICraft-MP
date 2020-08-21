@@ -196,6 +196,36 @@ unsigned short bin2ushort_b(char* data)
 	return get_endianess() == BIG_ENDIAN ? bin2ushort_d(data) : flip_ushort_endianess(bin2ushort_d(data));
 }
 
+int bin2int_l(char* data)
+{
+	return get_endianess() == LITTLE_ENDIAN ? bin2int_d(data) : flip_int_endianess(bin2int_d(data));
+}
+
+unsigned int bin2uint_l(char* data)
+{
+	return get_endianess() == LITTLE_ENDIAN ? bin2uint_d(data) : flip_uint_endianess(bin2uint_d(data));
+}
+
+long long bin2long_l(char* data)
+{
+	return get_endianess() == LITTLE_ENDIAN ? bin2long_d(data) : flip_long_endianess(bin2long_d(data));
+}
+
+unsigned long long bin2ulong_l(char* data)
+{
+	return get_endianess() == LITTLE_ENDIAN ? bin2ulong_d(data) : flip_ulong_endianess(bin2ulong_d(data));
+}
+
+short bin2long_l(char* data)
+{
+	return get_endianess() == LITTLE_ENDIAN ? bin2short_d(data) : flip_short_endianess(bin2short_d(data));
+}
+
+unsigned short bin2ushort_l(char* data)
+{
+	return get_endianess() == LITTLE_ENDIAN ? bin2ushort_d(data) : flip_ushort_endianess(bin2ushort_d(data));
+}
+
 /* TODO: Implement different endianesses. */
 all_the_t unpack(int endianess, void* data)
 {
