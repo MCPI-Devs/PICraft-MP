@@ -101,7 +101,6 @@ unsigned short flip_ushort_endianess(unsigned short value)
 	return (value >> 8) | (value << 8);
 }
 
-// Still expiremental
 float flip_float_endianess(float value)
 {
 	union
@@ -114,8 +113,7 @@ float flip_float_endianess(float value)
 	return flip.f;		
 }
 
-// Still expiremental
-float flip_double_endianess(double value)
+double flip_double_endianess(double value)
 {
 	union
 	{
@@ -262,7 +260,6 @@ double bin2double_l(char* data)
 	return get_endianess() == LITTLE_END ? bin2double_d(data) : flip_double_endianess(bin2double_d(data));
 }
 
-/* TODO: Implement different endianesses. */
 all_the_t unpack(int endianess, void* data)
 {
 	all_the_t final;
