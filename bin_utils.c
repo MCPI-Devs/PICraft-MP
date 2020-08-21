@@ -257,13 +257,13 @@ all_the_t unpack(int endianess, void* data)
 	all_the_t final;
 	char* buffer = data;
 
-	final.tshort = bin2short_d(buffer);
-	final.tint = bin2int_d(buffer);
-	final.tlong = bin2long_d(buffer);
-	final.tfloat = bin2float_d(buffer);
-	final.tdouble = bin2double_d(buffer);
-	final.tushort = bin2ushort_d(buffer);
-	final.tuint = bin2uint_d(buffer);
-	final.tulong = bin2ulong_d(buffer);
+	final.tshort = (endianess == BIG_END ? bin2short_b(buffer) : bin2short_l(buffer));
+	final.tint = (endianess == BIG_END ? bin2int_b(buffer) : bin2int_l(buffer));
+	final.tlong = (endianess == BIG_END ? bin2long_b(buffer) : bin2long_l(buffer));
+	final.tfloat = (endianess == BIG_END ? bin2float_b(buffer) : bin2float_l(buffer));
+	final.tdouble = (endianess == BIG_END ? bin2double_b(buffer) : bin2double_l(buffer));
+	final.tushort = (endianess == BIG_END ? bin2ushort_b(buffer) : bin2ushort_l(buffer));
+	final.tuint = (endianess == BIG_END ? bin2uint_b(buffer) : bin2uint_l(buffer));
+	final.tulong = (endianess == BIG_END ? bin2ulong_b(buffer) : bin2ulong_l(buffer));
 	return final;
 }
