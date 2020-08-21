@@ -57,11 +57,6 @@ typedef enum text_style_t {
 	ERROR
 } text_style_t;
 
-typedef enum endianess_t {
-	BIG_END,
-	LITTLE_END
-} endianess_t;
-
 typedef union all_the_t {
 	short tshort;
 	int tint;
@@ -73,6 +68,6 @@ typedef union all_the_t {
 	unsigned long long tulong;
 } all_the_t;
 
-all_the_t unpack(endianess_t endianess, void* data);
+all_the_t unpack(int endianess, void* data);
 
 #endif /* MISC_H */
