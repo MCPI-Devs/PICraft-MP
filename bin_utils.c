@@ -29,6 +29,8 @@
 
 #include <misc.h>
 
+#include <arpa/inet.h>
+
 #define BIG_ENDIAN 0x00
 #define LITTLE_ENDIAN 0x01
 
@@ -110,7 +112,7 @@ float flip_float_endianess(float value)
 		int i;
 	} flip;
 	flip.f = value;
-	flip.i = flip_int_endianess(flip.i);
+	flip.i = htonl(flip.i);
 	return flip.f;		
 }
 
