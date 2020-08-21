@@ -166,6 +166,26 @@ int bin2bool_d(char* data)
 	return data[0] >= 1 ? 1 : 0;
 }
 
+int bin2int_b(char* data)
+{
+	return get_endianess() == BIG_ENDIAN ? bin2int_d(data) : flip_int_endianess(bin2int_d(data));
+}
+
+unsigned int bin2uint_b(char* data)
+{
+	return get_endianess() == BIG_ENDIAN ? bin2uint_d(data) : flip_uint_endianess(bin2uint_d(data));
+}
+
+long long bin2long_b(char* data)
+{
+	return get_endianess() == BIG_ENDIAN ? bin2long_d(data) : flip_long_endianess(bin2long_d(data));
+}
+
+unsigned long long bin2ulong_b(char* data)
+{
+	return get_endianess() == BIG_ENDIAN ? bin2ulong_d(data) : flip_ulong_endianess(bin2ulong_d(data));
+}
+
 /* TODO: Implement different endianesses. */
 all_the_t unpack(int endianess, void* data)
 {
