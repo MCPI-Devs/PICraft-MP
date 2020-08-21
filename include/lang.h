@@ -23,5 +23,5 @@
  * 
  */
 
-#ifndef EN_H
-#define EN_H
+#ifndef LANG_H
+#define LANG_H
