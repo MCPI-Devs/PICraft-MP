@@ -221,6 +221,11 @@ unsigned short bin2ushort_b(char* data)
 	return get_endianess() == BIG_END ? bin2ushort_d(data) : flip_ushort_endianess(bin2ushort_d(data));
 }
 
+float bin2float_b(char* data)
+{
+	return get_endianess() == BIG_END ? bin2float_d(data) : flip_float_endianess(bin2float_d(data));
+}
+
 int bin2int_l(char* data)
 {
 	return get_endianess() == LITTLE_END ? bin2int_d(data) : flip_int_endianess(bin2int_d(data));
@@ -249,6 +254,11 @@ short bin2short_l(char* data)
 unsigned short bin2ushort_l(char* data)
 {
 	return get_endianess() == LITTLE_END ? bin2ushort_d(data) : flip_ushort_endianess(bin2ushort_d(data));
+}
+
+double bin2double_l(char* data)
+{
+	return get_endianess() == BIG_END ? bin2double_d(data) : flip_double_endianess(bin2double_d(data));
 }
 
 /* TODO: Implement different endianesses. */
