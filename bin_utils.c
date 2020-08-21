@@ -27,8 +27,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <arpa/inet.h>
-
 #include <misc.h>
 
 #define BIG_ENDIAN 0x00
@@ -112,7 +110,7 @@ float flip_float_endianess(float value)
 		int i;
 	} flip;
 	flip.f = value;
-	flip.i = htonl(flip.i);
+	flip.i = flip_int_endianess(flip.i);
 	return flip.f;		
 }
 
