@@ -55,12 +55,12 @@ int get_endianess()
 
 int flip_int_endianess(int value)
 {
-	return (value >> 24) | ((value << 8) & 0x00FF0000) | ((value >> 8) & 0x00FF0000) | (value << 24);
+	return (value >> 24) | ((value << 8) & 0x00FF0000) | ((value >> 8) & 0x0000FF00) | (value << 24);
 }
 
 unsigned int flip_uint_endianess(unsigned int value)
 {
-	return (value >> 24) | ((value << 8) & 0x00FF0000) | ((value >> 8) & 0x00FF0000) | (value << 24);
+	return (value >> 24) | ((value << 8) & 0x00FF0000) | ((value >> 8) & 0x0000FF00) | (value << 24);
 }
 
 long long flip_long_endianess(long long value)
