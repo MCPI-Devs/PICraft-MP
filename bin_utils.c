@@ -92,6 +92,16 @@ unsigned long long flip_ulong_endianess(unsigned long long value)
 	return flipped_long;
 }
 
+short flip_short_endianess(short value)
+{
+	return (value >> 8) | (value << 8);
+}
+
+unsigned short flip_ushort_endianess(unsigned short value)
+{
+	return (value >> 8) | (value << 8);
+}
+
 int bin2int_d(char* data)
 {
 	check_length(data, 4);
