@@ -1,14 +1,14 @@
 #ifndef T_FORMAT_H
 #define T_FORMAT_H
 
-#define BLACK "\x1b[30m"
-#define RED "\x1b[31m"
-#define GREEN "\x1b[32m"
-#define YELLOW "\x1b[33m"
-#define BLUE "\x1b[34m"
-#define MAGENTA "\x1b[35m"
-#define CYAN "\x1b[36m"
-#define WHITE "\x1b[37m"
+#define BLACK "\x1b[2;30m"
+#define RED "\x1b[2;31m"
+#define GREEN "\x1b[2;32m"
+#define YELLOW "\x1b[2;33m"
+#define BLUE "\x1b[2;34m"
+#define MAGENTA "\x1b[2;35m"
+#define CYAN "\x1b[2;36m"
+#define WHITE "\x1b[2;37m"
 #define LIGHT_BLACK "\x1b[1;30m"
 #define LIGHT_RED "\x1b[1;31m"
 #define LIGHT_GREEN "\x1b[1;32m"
