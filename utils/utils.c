@@ -38,7 +38,7 @@ void logger(char *type, char* content) {
     } else if (strcmp(type, "success") == 0) {
         color = BRIGHT_GREEN;
     } else if (strcmp(type, "error") == 0) {
-        color = DARK_RED;
+        color = BRIGHT_RED;
     } else {
         return;
     }
