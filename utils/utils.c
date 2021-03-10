@@ -32,7 +32,7 @@ char *time_now() {
 void logger(char *type, char* content) {
     char *color;
     if (strcmp(type, "info") == 0) {
-        color = DARK_BLUE;
+        color = BRIGHT_BLUE;
     } else if (strcmp(type, "warn") == 0) {
         color = BRIGHT_YELLOW;
     } else if (strcmp(type, "success") == 0) {
