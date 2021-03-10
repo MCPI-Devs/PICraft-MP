@@ -1,5 +1,5 @@
-#ifndef TEXT_FORMAT_H
-#define TEXT_FORMAT_H
+#ifndef T_FORMAT_H
+#define T_FORMAT_H
 
 #define BOLD "\x1b[1m"
 #define OBFUSCATED ""
@@ -24,4 +24,4 @@
 #define YELLOW "\x1b[38;5;227m"
 #define WHITE "\x1b[38;5;231m"
 
-#endif // TEXT_FORMAT_H
+#endif // T_FORMAT_H
