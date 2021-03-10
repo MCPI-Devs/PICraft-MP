@@ -32,17 +32,17 @@ char *time_now() {
 void logger(char *type, char* content) {
     char *color;
     if (strcmp(type, "info") == 0) {
-        color = BRIGHT_BLUE;
+        color = LIGHT_BLUE;
     } else if (strcmp(type, "warn") == 0) {
-        color = BRIGHT_YELLOW;
+        color = LIGHT_YELLOW;
     } else if (strcmp(type, "success") == 0) {
-        color = BRIGHT_GREEN;
+        color = LIGHT_GREEN;
     } else if (strcmp(type, "error") == 0) {
-        color = BRIGHT_RED;
+        color = LIGHT_RED;
     } else {
         return;
     }
-    printf("%s<%s%s %s| %s%s%s> %s%s%s\n", DARK_YELLOW, BRIGHT_CYAN, time_now(), DARK_YELLOW, color, type, DARK_YELLOW, DEFAULT, content, DEFAULT);
+    printf("%s<%s%s %s| %s%s%s> %s%s%s\n", YELLOW, LIGHT_CYAN, time_now(), YELLOW, color, type, YELLOW, RESET, content, RESET);
 }
 
 char *get_input(char *prompt) {
