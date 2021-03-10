@@ -3,7 +3,6 @@
 #include <string.h>
 #include <utils/buffer.h>
 #include <utils/utils.h>
-#include <constant/text_format.h>
 
 void command_handler(char* command) {
     if (strcmp(command, "stop") == 0) {
