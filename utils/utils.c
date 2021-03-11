@@ -19,13 +19,36 @@ char *time_now() {
     unsigned int h = st->tm_hour;
     unsigned int m = st->tm_min;
     unsigned int s = st->tm_sec;
-    unsigned int length = 2;
-    length += digit_count(h);
-    length += digit_count(m);
-    length += digit_count(s);
-    char *result = malloc(length + 1);
-    sprintf(result, "%d:%d:%d", h, m, s);
-    result[length] = 0x00;
+    char *h_c = malloc(3);
+    char *m_c = malloc(3);
+    char *s_c = malloc(3);
+    if (digit_count(h) == 0) {
+        sprintf(h_c, "%d%d", 0, 0);
+    } else if (digit_count(h) == 1) {
+        sprintf(h_c, "%d%d", 0, h);
+    } else {
+        sprintf(h_c, "%d", h);
+    }
+    h_c[2] = 0x00;
+    if (digit_count(m) == 0) {
+        sprintf(m_c, "%d%d", 0, 0);
+    } else if (digit_count(m) == 1) {
+        sprintf(m_c, "%d%d", 0, m);
+    } else {
+        sprintf(m_c, "%d", m);
+    }
+    m_c[2] = 0x00;
+    if (digit_count(s) == 0) {
+        sprintf(s_c, "%d%d", 0, 0);
+    } else if (digit_count(s) == 1) {
+        sprintf(s_c, "%d%d", 0, s);
+    } else {
+        sprintf(s_c, "%d", s);
+    }
+    s_c[2] = 0x00;
+    char *result = malloc(9);
+    sprintf(result, "%s:%s:%s", h_c, m_c, s_c);
+    result[8] = 0x00;
     return result;
 }
 
