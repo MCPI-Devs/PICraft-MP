@@ -41,7 +41,7 @@ unsigned int end_of_buffer(buffer_t *_buffer) {
     }
 }
 
-unsigned long long read_unum_be(buffer_t *_buffer, unsigned int length, char *byte_order) {
+unsigned long long read_unum(buffer_t *_buffer, unsigned int length, char *byte_order) {
     char *data = read_buffer(_buffer, length);
     unsigned int i;
     unsigned long long result = 0;
