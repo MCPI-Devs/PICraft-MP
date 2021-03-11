@@ -46,7 +46,7 @@ unsigned long long read_unum_be(buffer_t *_buffer, unsigned int length, char *by
     unsigned int i;
     unsigned long long result = 0;
     for (i = 0; i < length; i++) {
-        result |= (data[strcmp(byte_order, "big") == 0 ? abs(i - 3) : i] << (i * 8));
+        result |= (data[strcmp(byte_order, "big") == 0 ? abs(i - length - 1) : i] << (i * 8));
     }
     return result;
 }
