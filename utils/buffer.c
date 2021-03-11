@@ -56,11 +56,10 @@ void write_unum(buffer_t *_buffer, unsigned long long value, unsigned int length
     if (number_byte_count(value) > length) {
         return;
     }
+    char x;
     unsigned int i;
-    char* data = malloc(length + 1);
-    data[length] = 0x00;
     for (i = 0; i < length; i++) {
-        data[strcmp(byte_order, "big") == 0 ? abs(i - (length - 1)) : i] = (value >> (i * 8)) & 0xff;
+        x = (value >> (8 * strcmp(byte_order, "big") == 0 ? abs(i - (length - 1)) : i)) & 0xff;
+        write_buffer(_buffer, &x);
     }
-    write_buffer(_buffer, data);
 }
