@@ -3,7 +3,8 @@
 
 typedef struct {
     byte_array_t data;
-    int pos;
+    unsigned int pos;
+    unsigned int w_pos;
 } buffer_t;
 
 void reset_buffer(buffer_t *_buffer);
