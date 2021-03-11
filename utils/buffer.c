@@ -41,30 +41,12 @@ unsigned int end_of_buffer(buffer_t *_buffer) {
     }
 }
 
-unsigned int read_uchar(buffer_t *_buffer) {
-    return read_buffer(_buffer, 1)[0];
-}
-
-void write_uchar(buffer_t *_buffer, unsigned int value) {
-    char cv = value;
-    write_buffer(_buffer, &cv);
-}
-
-int read_char(buffer_t *_buffer) {
-    return read_buffer(_buffer, 1)[0];
-}
-
-void write_char(buffer_t *_buffer, int value) {
-    char cv = value;
-    write_buffer(_buffer, &cv);
-}
-
-unsigned int read_uint_be(buffer_t *_buffer) {
-    char *data = read_buffer(_buffer, 4);
-    return data[3] | (data[2] << 8) | (data[1] << 16) | (data[0] << 24);
-}
-
-unsigned int read_uint_le(buffer_t *_buffer) {
-    char *data = read_buffer(_buffer, 4);
-    return data[0] | (data[1] << 8) | (data[2] << 16) | (data[3] << 24);
+unsigned long long read_unum_be(buffer_t *_buffer, unsigned int length, char *byte_order) {
+    char *data = read_buffer(_buffer, length);
+    unsigned int i;
+    unsigned long long result = 0;
+    for (i = 0; i < length; i++) {
+        result |= (data[strcmp(byte_order, "big") == 0 ? abs(i - 3) : i] << (i * 8));
+    }
+    return result;
 }
