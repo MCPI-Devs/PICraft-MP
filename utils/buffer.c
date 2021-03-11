@@ -50,3 +50,6 @@ unsigned long long read_unum(buffer_t *_buffer, unsigned int length, char *byte_
     }
     return result;
 }
+
+void write_unum(buffer_t *_buffer, unsigned long long value) {
+}
