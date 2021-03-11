@@ -52,11 +52,15 @@ unsigned long long read_unum(buffer_t *_buffer, unsigned int length, char *byte_
     return result;
 }
 
-void write_unum(buffer_t *_buffer, unsigned long long value, char *byte_order) {
-    unsigned int length = number_byte_count(value);
-    unsigned int i;
-    for (i = 0; i < length; i++) {
-        char cv = (value >> (8 * strcmp(byte_order, "big") == 0 ? abs(i - (length - 1)) : i)) & 0xff;
-        write_buffer(_buffer, &cv);
+void write_unum(buffer_t *_buffer, unsigned long long value, unsigned int length, char *byte_order) {
+    if (number_byte_count(value) > length) {
+        return;
     }
+    unsigned int i;
+    char* data = malloc(length + 1)
+    data[length] = 0x00;
+    for (i = 0; i < length; i++) {
+        data[strcmp(byte_order, "big") == 0 ? abs(i - (length - 1)) : i] = (value >> (i * 8)) & 0xff;
+    }
+    write_buffer(_buffer, data);
 }
