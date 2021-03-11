@@ -8,6 +8,7 @@
 void reset_buffer(buffer_t *_buffer) {
     _buffer->data = "";
     _buffer->pos = 0;
+    _buffer->w_pos = 0;
 }
 
 void write_buffer(buffer_t *_buffer, byte_array_t _byte_array) {unsigned int i;
@@ -22,7 +23,7 @@ byte_array_t read_buffer(buffer_t *_buffer, unsigned int length) {
     unsigned int i;
     for (i = 0; i < length; i++) {
         result.v[i] = _buffer->data.v[i + _buffer->pos];
-        _buffer->pos += i
+        _buffer->pos += i;
     }
     return result;
 }
