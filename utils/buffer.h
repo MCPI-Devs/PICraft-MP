@@ -2,7 +2,7 @@
 #define BUFFER_H
 
 typedef struct {
-    char *data;
+    byte_array_t data;
     int pos;
 } buffer_t;
 
