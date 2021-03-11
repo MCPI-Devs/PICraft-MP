@@ -11,10 +11,11 @@ void reset_buffer(buffer_t *_buffer) {
 void write_buffer(buffer_t *_buffer, char *data) {
     unsigned int length = strlen(_buffer->data) + strlen(data) + 1;
     char* result = malloc(length);
-    for (unsigned int i = 0; i < strlen(_buffer->data); i++) {
+    unsigned int i;
+    for (i = 0; i < strlen(_buffer->data); i++) {
         result[i] = _buffer->data[i];
     }
-    for (unsigned int i = 0; i < strlen(data); i++) {
+    for (i = 0; i < strlen(data); i++) {
         result[i + strlen(_buffer->data)] = data[i];
     }
     result[length - 1] = 0x00;
@@ -23,7 +24,8 @@ void write_buffer(buffer_t *_buffer, char *data) {
 
 char* read_buffer(buffer_t *_buffer, unsigned int length) {
     char* result = malloc(length + 1);
-    for (unsigned int i = 0; i < length; i++) {
+    unsigned int i;
+    for (i = 0; i < length; i++) {
         result[i] = _buffer->data[i + _buffer->pos];
     }
     _buffer->pos += length;

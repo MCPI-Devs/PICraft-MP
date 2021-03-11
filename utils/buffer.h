@@ -14,4 +14,4 @@ char* read_buffer(buffer_t *_buffer, unsigned int length);
 
 unsigned int end_of_buffer(buffer_t *_buffer);
 
-#endif // BUFFER_H
+#endif

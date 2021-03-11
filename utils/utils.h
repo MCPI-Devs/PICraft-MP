@@ -9,4 +9,4 @@ void logger(char *type, char *content);
 
 char *get_input(char *prompt);
 
-#endif // UTILS_H
+#endif

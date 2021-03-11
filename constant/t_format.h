@@ -19,4 +19,4 @@
 #define LIGHT_WHITE "\x1b[0;1;37m"
 #define RESET "\x1b[0m"
 
-#endif // T_FORMAT_H
+#endif

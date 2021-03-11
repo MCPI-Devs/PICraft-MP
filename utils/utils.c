@@ -7,7 +7,8 @@
 
 unsigned int digit_count(int value) {
     unsigned int count = 0;
-    for (int i = value; i != 0; i /= 10) {
+    unsigned int i;
+    for (i = value; i != 0; i /= 10) {
         ++count;
     }
     return count;
