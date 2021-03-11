@@ -9,7 +9,7 @@ void command_handler(char* command) {
         logger("info", "Stopping server...");
         logger("info", "Server stopped.");
         exit(0);
-    } else if (strcmp(command, "") == 0) {
+    } else if (strlen(command) <= 0) {
     } else {
         logger("error", "Invalid command!");
     }

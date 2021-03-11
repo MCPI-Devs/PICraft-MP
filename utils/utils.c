@@ -71,7 +71,7 @@ void logger(char *type, char* content) {
 
 char *get_input(char *prompt) {
     printf("%s", prompt);
-    int size;
+    int size = 128;
     char* input = malloc(size);
     fgets(input, size, stdin);
     input[strcspn(input, "\n")] = 0x00;
