@@ -3,10 +3,14 @@
 #include <string.h>
 #include <utils/buffer.h>
 #include <utils/utils.h>
-#include <utils/byte_array.h>
+
+unsigned int byte_array_size(byte_array_t _byte_array) {
+    return (sizeof(_byte_array.v) / sizeof(_byte_array.v[0]));
+}
 
 void reset_buffer(buffer_t *_buffer) {
-    _buffer->data = "";
+    byte_array_t _byte_array;
+    _buffer->data = _byte_array;
     _buffer->pos = 0;
     _buffer->w_pos = 0;
 }
