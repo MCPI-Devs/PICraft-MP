@@ -58,3 +58,13 @@ void write_char(buffer_t *_buffer, int value) {
     char cv = value;
     write_buffer(_buffer, &cv);
 }
+
+unsigned int read_uint_be(buffer_t *_buffer) {
+    char *data = read_buffer(_buffer, 4);
+    return data[3] | (data[2] << 8) | (data[1] << 16) | (data[0] << 24);
+}
+
+unsigned int read_uint_le(buffer_t *_buffer) {
+    char *data = read_buffer(_buffer, 4);
+    return data[0] | (data[1] << 8) | (data[2] << 16) | (data[3] << 24);
+}
