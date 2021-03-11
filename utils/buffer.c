@@ -47,7 +47,11 @@ unsigned long long read_unum(buffer_t *_buffer, unsigned int length, char *byte_
     unsigned int i;
     unsigned long long result = 0;
     for (i = 0; i < length; i++) {
-        result |= (data[strcmp(byte_order, "big") == 0 ? abs(i - (length - 1)) : i] << (i * 8));
+        if (strcmp(byte_order, "big") == 0) {
+            result |= (data[abs(i - (length - 1))] << (i * 8));
+        } else {
+            result |= (data[i] << (i * 8));
+        }
     }
     return result;
 }
@@ -59,7 +63,11 @@ void write_unum(buffer_t *_buffer, unsigned long long value, unsigned int length
     char x;
     unsigned int i;
     for (i = 0; i < length; i++) {
-        x = (value >> (8 * strcmp(byte_order, "big") == 0 ? abs(i - (length - 1)) : i)) & 0xff;
+        if (strcmp(byte_order, "big") == 0) {
+            x = ((value >> (8 * abs(i - (length - 1)))) & 0xff);
+        } else {
+            x = ((value >> (8 * i)) & 0xff);
+        }
         write_buffer(_buffer, &x);
     }
 }
