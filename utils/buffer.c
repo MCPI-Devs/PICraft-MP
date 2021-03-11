@@ -49,3 +49,12 @@ void write_uchar(buffer_t *_buffer, unsigned int value) {
     char cv = value;
     write_buffer(_buffer, &cv);
 }
+
+int read_char(buffer_t *_buffer) {
+    return read_buffer(_buffer, 1)[0];
+}
+
+void write_char(buffer_t *_buffer, int value) {
+    char cv = value;
+    write_buffer(_buffer, &cv);
+}
