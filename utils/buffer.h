@@ -2,10 +2,16 @@
 #define BUFFER_H
 
 typedef struct {
+    char v[65535];
+} byte_array_t;
+
+typedef struct {
     byte_array_t data;
     unsigned int pos;
     unsigned int w_pos;
 } buffer_t;
+
+unsigned int byte_array_size(byte_array_t _byte_array);
 
 void reset_buffer(buffer_t *_buffer);
 
