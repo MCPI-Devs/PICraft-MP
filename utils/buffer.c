@@ -40,3 +40,12 @@ unsigned int end_of_buffer(buffer_t *_buffer) {
         return 0;
     }
 }
+
+unsigned int read_uchar(buffer_t *_buffer) {
+    return read_buffer(_buffer, 1)[0];
+}
+
+void write_uchar(buffer_t *_buffer, unsigned int value) {
+    char cv = value;
+    write_buffer(_buffer, &cv);
+}
