@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <utils/buffer.h>
+#include <utils/utils.h>
 
 void reset_buffer(buffer_t *_buffer) {
     _buffer->data = "";
@@ -51,5 +52,10 @@ unsigned long long read_unum(buffer_t *_buffer, unsigned int length, char *byte_
     return result;
 }
 
-void write_unum(buffer_t *_buffer, unsigned long long value) {
+void write_unum(buffer_t *_buffer, unsigned long long value, char *byte_order) {
+    unsigned int length = number_byte_count(value);
+    unsigned int i;
+    for (i = 0; i < length; i++) {
+        write_buffer(_buffer, (number >> (8 * strcmp(byte_order, "big") == 0 ? abs(i - (length - 1)) : i)) & 0xff);
+    }
 }
