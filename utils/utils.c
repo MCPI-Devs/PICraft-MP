@@ -77,3 +77,12 @@ char *get_input(char *prompt) {
     input[strcspn(input, "\n")] = 0x00;
     return input;
 }
+
+unsigned int number_byte_count(long long number) {
+    unsigned int byte_count = 0;
+    while (number != 0) {
+        number >>= 8;
+        ++byte_count;
+    }
+    return byte_count;
+}
