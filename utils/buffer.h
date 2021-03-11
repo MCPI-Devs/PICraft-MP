@@ -14,4 +14,8 @@ char* read_buffer(buffer_t *_buffer, unsigned int length);
 
 unsigned int end_of_buffer(buffer_t *_buffer);
 
+unsigned int read_uchar(buffer_t *_buffer);
+
+void write_uchar(buffer_t *_buffer, unsigned int value);
+
 #endif
