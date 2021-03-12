@@ -126,6 +126,6 @@ char *joinstr(char *value_i, char *value_ii) {
             result[i] = value_ii[i - length_vi]
         }
     }
-    result[length] = 0x00
+    result[length] = 0x00;
     return result;
 }
