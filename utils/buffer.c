@@ -26,3 +26,12 @@ void reset_buffer(buffer_t *buffer) {
     buffer->data = "";
     buffer->pos = 0;
 }
+
+unsigned char read_u_int_8(buffer_t *buffer) {
+    unsigned char result = pop_buffer(buffer, 1);
+    return result;
+}
+
+void write_u_int_8(buffer_t *buffer, unsigned char value) {
+    append_buffer(buffer, &value);
+}
