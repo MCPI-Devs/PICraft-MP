@@ -27,7 +27,7 @@ void reset_buffer(buffer_t *buffer) {
     buffer->pos = 0;
 }
 
-unsigned char read_int_8(buffer_t *buffer) {
+char read_int_8(buffer_t *buffer) {
     char result = pop_buffer(buffer, 1)[0];
     return result;
 }
@@ -43,4 +43,34 @@ unsigned char read_u_int_8(buffer_t *buffer) {
 
 void write_u_int_8(buffer_t *buffer, unsigned char value) {
     append_buffer(buffer, &value);
+}
+
+short read_int_16(buffer_t *buffer) {
+    char *data = pop_buffer(buffer, 2);
+    short result = data[0];
+    result |= (data[1] << 8);
+    return result;
+}
+
+void write_int_16(buffer_t *buffer, short value) {
+    char *result = malloc(3);
+    result[0] = (value & 0xff);
+    result[1] = ((value >> 8) & 0xff);
+    result[2] = 0x00;
+    append_buffer(buffer, &value);
+}
+
+unsigned short read_u_int_16(buffer_t *buffer) {
+    char *data = pop_buffer(buffer, 2);
+    unsigned short result = data[0];
+    result |= (data[1] << 8);
+    return result;
+}
+
+void write_u_int_16(buffer_t *buffer, unsigned short value) {
+    char *result = malloc(3);
+    result[0] = (value & 0xff);
+    result[1] = ((value >> 8) & 0xff);
+    result[2] = 0x00;
+    append_buffer(buffer, result);
 }
