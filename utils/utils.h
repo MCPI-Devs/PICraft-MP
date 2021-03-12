@@ -15,4 +15,6 @@ void print_hex(char* data);
 
 char *substr(char *value, unsigned int pos, unsigned int length);
 
+char *joinstr(char *value_i, char *value_ii);
+
 #endif
