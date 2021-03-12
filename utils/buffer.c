@@ -16,8 +16,8 @@ void reset_buffer(buffer_t *_buffer) {
 }
 
 void write_buffer(buffer_t *_buffer, byte_array_t _byte_array) {
-    unsigned int length = byte_array_size(_byte_array)
-    unsigned int i;                             
+    unsigned int length = byte_array_size(_byte_array);
+    unsigned int i;
     for (i = 0; i < length; i++) {
         _buffer->data.v[i + _buffer->w_pos] = _byte_array.v[i];
     }
