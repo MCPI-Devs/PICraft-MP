@@ -112,3 +112,19 @@ char *substr(char *value, unsigned int pos, unsigned int length) {
     result[length] = 0x00;
     return result;
 }
+
+char *joinstr(char *value_i, char *value_ii) {
+    unsigned int length_vi = strlen(value_i);
+    unsigned int length_vii = strlen(value_ii);
+    unsigned int length = length_vi + length_vii;
+    char *result = malloc(length + 1);
+    unsigned int i;
+    for (i = 0; i < length; i++) {
+        if (i < length_vi) {
+            result[i] = value_i[i]
+        } else {
+            result[i] = value_ii[i - length_vi]
+        }
+    }
+    return result;
+}
