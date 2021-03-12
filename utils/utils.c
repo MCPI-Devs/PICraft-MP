@@ -88,7 +88,7 @@ unsigned int number_byte_count(long long number) {
 }
 
 void print_hex(char one) {
-    printf("0x%x", one & 0xff);
+    printf("0x%x\n", one & 0xff);
 }
 
 char *substr(char *value, unsigned int pos, unsigned int length) {
