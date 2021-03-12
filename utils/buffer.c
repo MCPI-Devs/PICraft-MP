@@ -12,7 +12,7 @@ buffer_t new_buffer() {
     return buffer;
 }
 
-char *read_one(buffer_t *buffer) {
+char read_one(buffer_t *buffer) {
     char value = buffer.data[buffer->r_pos]
     ++buffer->r_pos;
     return value;
