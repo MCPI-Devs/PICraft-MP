@@ -6,15 +6,7 @@
 #include <utils/buffer.h>
 
 void append_buffer(buffer_t *buffer, char* data) {
-    if (strlen(buffer->data) == 0) {
-        buffer->data = data;
-    } else {
-        int length = strlen(buffer->data) + strlen(data);
-        char *result = malloc(length + 1);
-        sprintf(result, "%s%s", buffer->data, data);
-        result[length] = 0x00;
-        buffer->data = result;
-    }
+    buffer->data = joinstr(buffer->data, data);
 }
 
 char *pop_buffer(buffer_t *buffer, unsigned int length) {
