@@ -102,3 +102,13 @@ void print_hex(char* data) {
         }
     }
 }
+
+char *substr(char *value, unsigned int pos, unsigned int length) {
+    char *result = malloc(length + 1);
+    unsigned int i;
+    for (i = pos; i < length; i++) {
+        result[i - pos] = value[i];
+    }
+    result[length] = 0x00;
+    return result;
+}
