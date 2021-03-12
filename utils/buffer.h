@@ -12,6 +12,6 @@ char *pop_buffer(buffer_t *buffer, unsigned int length);
 
 buffer_t new_buffer();
 
-void reset(buffer_t *buffer);
+void reset_buffer(buffer_t *buffer);
 
 #endif
