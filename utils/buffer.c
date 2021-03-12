@@ -27,6 +27,15 @@ void reset_buffer(buffer_t *buffer) {
     buffer->pos = 0;
 }
 
+unsigned char read_int_8(buffer_t *buffer) {
+    char result = pop_buffer(buffer, 1)[0];
+    return result;
+}
+
+void write_int_8(buffer_t *buffer, char value) {
+    append_buffer(buffer, &value);
+}
+
 unsigned char read_u_int_8(buffer_t *buffer) {
     unsigned char result = pop_buffer(buffer, 1)[0];
     return result;
