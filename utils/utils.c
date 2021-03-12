@@ -87,20 +87,8 @@ unsigned int number_byte_count(long long number) {
     return byte_count;
 }
 
-void print_hex(char* data) {
-    unsigned int length = strlen(data);
-    unsigned int i;
-    for (i = 0; i < length; i++) {
-        if (i == 0) {
-            printf("[ ");
-        }
-        printf("0x%x", data[i] & 0xff);
-        if (i == (length - 1)) {
-            printf(" ]\n");
-        } else {
-            printf(", ");
-        }
-    }
+void print_hex(char one) {
+    printf("0x%x", one & 0xff);
 }
 
 char *substr(char *value, unsigned int pos, unsigned int length) {
