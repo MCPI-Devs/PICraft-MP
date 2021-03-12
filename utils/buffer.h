@@ -7,11 +7,9 @@ typedef struct {
     unsigned int w_pos;
 } buffer_t;
 
-buffer_t new_buffer();
+char read_one(buffer_t *buffer);
 
-char *pop_buffer(buffer_t *buffer, unsigned int length);
-
-void append_buffer(buffer_t *buffer, char* data);
+void write_one(buffer_t *buffer, char one);
 
 void reset_buffer(buffer_t *buffer);
 
