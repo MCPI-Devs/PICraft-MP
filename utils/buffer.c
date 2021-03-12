@@ -15,11 +15,13 @@ void reset_buffer(buffer_t *_buffer) {
     _buffer->w_pos = 0;
 }
 
-void write_buffer(buffer_t *_buffer, byte_array_t _byte_array) {unsigned int i;
-    for (i = 0; i < byte_array_size(_byte_array); i++) {
-        _buffer->data.v[_buffer->w_pos] = _byte_array.v[i];
-        ++_buffer->w_pos;
+void write_buffer(buffer_t *_buffer, byte_array_t _byte_array) {
+    unsigned int length = byte_array_size(_byte_array)
+    unsigned int i;                             
+    for (i = 0; i < length; i++) {
+        _buffer->data.v[i + _buffer->w_pos] = _byte_array.v[i];
     }
+    _buffer->w_pos += length;
 }
 
 byte_array_t read_buffer(buffer_t *_buffer, unsigned int length) {
@@ -27,8 +29,8 @@ byte_array_t read_buffer(buffer_t *_buffer, unsigned int length) {
     unsigned int i;
     for (i = 0; i < length; i++) {
         result.v[i] = _buffer->data.v[i + _buffer->pos];
-        _buffer->pos += i;
     }
+    _buffer->pos += length;
     return result;
 }
 
