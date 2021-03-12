@@ -13,7 +13,7 @@ buffer_t new_buffer() {
 }
 
 char read_one(buffer_t *buffer) {
-    char value = buffer.data[buffer->r_pos]
+    char value = buffer->data[buffer->r_pos]
     ++buffer->r_pos;
     return value;
 }
@@ -24,7 +24,7 @@ void write_one(buffer_t *buffer, char one) {
 }
 
 void reset_buffer(buffer_t *buffer) {
-    memset(&buffer->data, 0, sizeof(buffer->data));
-    buffer.r_pos = 0;
-    buffer.w_pos = 0;
+    memset(buffer->data, 0, sizeof(buffer->data));
+    buffer->r_pos = 0;
+    buffer->w_pos = 0;
 }
