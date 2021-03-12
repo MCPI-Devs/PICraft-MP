@@ -121,9 +121,9 @@ char *joinstr(char *value_i, char *value_ii) {
     unsigned int i;
     for (i = 0; i < length; i++) {
         if (i < length_vi) {
-            result[i] = value_i[i]
+            result[i] = value_i[i];
         } else {
-            result[i] = value_ii[i - length_vi]
+            result[i] = value_ii[i - length_vi];
         }
     }
     result[length] = 0x00;
