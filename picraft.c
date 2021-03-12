@@ -15,8 +15,15 @@ void command_handler(char* command) {
     }
 }
 
+void debug_buffer() {
+    buffer_t buffer = new_buffer();
+    append_buffer(&buffer, "\x01\x02\x03\xfd");
+    print_hex(pop_buffer(&buffer, 4));
+}
+
 int main() {
     logger("success", "Done!");
+    debug_buffer();
     while (1) {
         command_handler(get_input("> "));
     }
