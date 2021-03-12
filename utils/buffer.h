@@ -7,6 +7,8 @@ typedef struct {
     unsigned int w_pos;
 } buffer_t;
 
+buffer_t new_buffer();
+
 char read_one(buffer_t *buffer);
 
 void write_one(buffer_t *buffer, char one);
