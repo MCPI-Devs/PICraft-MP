@@ -11,7 +11,7 @@ char *get_input(char *prompt);
 
 unsigned int number_byte_count(long long number);
 
-void print_hex(char* data);
+void print_hex(char one);
 
 char *substr(char *value, unsigned int pos, unsigned int length);
 
