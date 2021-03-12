@@ -5,14 +5,14 @@
 #include <utils/utils.h>
 #include <utils/buffer.h>
 
-void append_buffer(buffer_t *buffer, char* data) {
-    buffer->data = joinstr(buffer->data, data);
-}
-
 char *pop_buffer(buffer_t *buffer, unsigned int length) {
     char* value = substr(buffer->data, buffer->pos, length);
     buffer->pos += length;
     return value;
+}
+
+void append_buffer(buffer_t *buffer, char* data) {
+    buffer->data = joinstr(buffer->data, data);
 }
 
 buffer_t new_buffer() {
