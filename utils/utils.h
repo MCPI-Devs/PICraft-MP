@@ -11,4 +11,6 @@ char *get_input(char *prompt);
 
 unsigned int number_byte_count(long long number);
 
+char *substr(char *value, unsigned int pos, unsigned int length)
+
 #endif
