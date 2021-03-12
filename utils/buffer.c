@@ -57,7 +57,7 @@ void write_int_16(buffer_t *buffer, short value) {
     result[0] = (value & 0xff);
     result[1] = ((value >> 8) & 0xff);
     result[2] = 0x00;
-    append_buffer(buffer, &value);
+    append_buffer(buffer, result);
 }
 
 unsigned short read_u_int_16(buffer_t *buffer) {
