@@ -28,7 +28,7 @@ void reset_buffer(buffer_t *buffer) {
 }
 
 unsigned char read_u_int_8(buffer_t *buffer) {
-    unsigned char result = pop_buffer(buffer, 1);
+    unsigned char result = pop_buffer(buffer, 1)[0];
     return result;
 }
 
