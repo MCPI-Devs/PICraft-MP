@@ -2,8 +2,9 @@
 #define BUFFER_H
 
 typedef struct {
-    char *data;
-    int pos;
+    char data[65535];
+    unsigned int r_pos;
+    unsigned int w_pos;
 } buffer_t;
 
 buffer_t new_buffer();
