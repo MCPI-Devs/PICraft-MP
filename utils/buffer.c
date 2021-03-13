@@ -38,8 +38,8 @@ int read_int_le(buffer_t *buffer) {
 }
 
 void write_int_le(buffer_t *buffer, int value) {
-    write_one((value & 0xff));
-    write_one(((value >> 8) & 0xff));
-    write_one(((value >> 16) & 0xff));
-    write_one(((value >> 24) & 0xff));
+    write_one(buffer, (value & 0xff));
+    write_one(buffer, ((value >> 8) & 0xff));
+    write_one(buffer, ((value >> 16) & 0xff));
+    write_one(buffer, ((value >> 24) & 0xff));
 }
