@@ -15,4 +15,8 @@ void write_one(buffer_t *buffer, char one);
 
 void reset_buffer(buffer_t *buffer);
 
+int read_int_le(buffer_t *buffer);
+
+void write_int_le(buffer_t *buffer, int value);
+
 #endif
