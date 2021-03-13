@@ -28,3 +28,18 @@ void reset_buffer(buffer_t *buffer) {
     buffer->r_pos = 0;
     buffer->w_pos = 0;
 }
+
+int read_int_le(buffer_t *buffer) {
+    int result = read_one(buffer);
+    result |= read_one(buffer) << 8;
+    result |= read_one(buffer) << 16;
+    result |= read_one(buffer) << 24;
+    return result;
+}
+
+void write_int_le(buffer_t *buffer, int value) {
+    write_one((value & 0xff));
+    write_one(((value >> 8) & 0xff));
+    write_one(((value >> 16) & 0xff));
+    write_one(((value >> 24) & 0xff));
+}
